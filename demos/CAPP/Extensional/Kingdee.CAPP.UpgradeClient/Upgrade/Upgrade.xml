@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AutoUpdater>
+  <!--升级文件所在服务器端的网址-->
+  <URLAddres URL=""/>
+  <!--升级文件的更新日期-->
+  <UpdateInfo>
+    <!--上次升级的日期-->
+    <UpdateTime Date=""/>
+    <!--升级文件的版本号-->
+    <Version Num=""/>
+  </UpdateInfo>
+  <UpdateFileList>
+    <!--升级文件列表-->
+    <UpdateFile FileName="aa.txt"/>
+    <UpdateFile FileName="VB40.rar"/>
+    <UpdateFile FileName="VB4-1.CAB"/>
+  </UpdateFileList>
+  <RestartApp>
+    <!--允许重新启动应用程序-->
+    <ReStart Allow=""/>
+    <!--启动的应用程序名-->
+    <AppName Name=""/>
+  </RestartApp>
+</AutoUpdater>

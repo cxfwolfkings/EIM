@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lottery</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.css")">
+    @RenderSection("styles", required: false)
+    <link rel="stylesheet" href="@Url.Content("~/Content/main.css")">
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+      <![endif]-->
+</head>
+<body>
+    @RenderBody()
+    <div class="brand" style="position: absolute; bottom: 10px; right: 0px; text-align: right; z-index:-1">
+        <img src="@Url.Content("~/Resource/brand.png")" style="width: 40%;" />
+        <div style="font-size: 20px;color: white;position: absolute;bottom: 0px;right: 30px;">电气研发部</div>
+    </div>
+    @Html.Partial("_PartialNavPage")
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="@Url.Content("~/Scripts/jquery.min.js")"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/layer/layer.js")"></script>
+    <script src="@Url.Content("~/Scripts/app.js")"></script>
+    @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            var app = window.app;
+            var isMax = false;
+            $('ul.selectors li').each(function (index, item) {
+                $(item).click(function () {
+                    if (index == 6) {
+                        location.href = '@Url.Action("Luckytable")';
+                    } else if (index == 7) {
+                        location.href = '@Url.Action("Turntable")';
+                    } else if (index == 8) {
+                        location.href = '@Url.Action("Versus")';
+                    } else {
+                        location.href = '@Url.Action("Index")?Level=' + (5 - index);
+                    }
+                });
+            });
+            @*$('.screenBtn').click(function () {
+                if (isMax) {
+                    app.exitScreen();
+                    $('.screenBtn img').attr('src', '@Url.Content("~/Resource/max.png")');
+                    $('.screenBtn img').attr('alt', '全屏');
+                    $('.screenBtn span').text('全屏');
+                    isMax = false;
+                } else {
+                    app.fullScreen();
+                    $('.screenBtn img').attr('src', '@Url.Content("~/Resource/min.png")');
+                    $('.screenBtn img').attr('alt', '窗口');
+                    $('.screenBtn span').text('窗口');
+                    isMax = true;
+                }
+            });*@
+            $('.clearRd').click(function () {
+                //询问框
+                layer.confirm('是否删除？', {
+                    btn: ['确定','取消'] // 按钮
+                }, function(){
+                    $.post('@Url.Action("Clear")', null, function (data, status, xhr) {
+                        layer.closeAll();
+                        layer.alert(data.Msg);
+                    });
+                }, function () {
+                    // ...
+                });
+            });
+            $('.setting').click(function () {
+                window.open('@Url.Action("Setting")');
+            });
+
+            // 首次加载，以768为准
+            changeZoomValue([$('.lottery-premium-panel'), $('.panContent'), $('.premium-record'), $('.paiContainer')], window.innerHeight, 768);
+            var srcHeight = window.innerHeight;
+            $(window).resize(function(){
+                var curHeight = window.innerHeight;
+                changeZoomValue([$('.lottery-premium-panel'), $('.panContent'), $('.premium-record'), $('.paiContainer')], curHeight, srcHeight);
+                srcHeight = curHeight;
+            });
+            $('.navbar-default').mouseleave(function () {
+                $('.navbar-default').hide();
+            });
+            $('.navControl').mouseenter(function () {
+                $('.navbar-default').show();
+            });
+            $('.body').click(function () {
+                $('.navbar-default').hide();
+            });
+
+            function changeZoomValue(items, curHeight, srcHeight) {
+                $.each(items, function (index, item) {
+                    if ($(item) && $(item).length) {
+                        var zoomValue = $(item).css('zoom') - 0;
+                        zoomValue = Math.round(100 * zoomValue * curHeight / srcHeight) / 100;
+                        $(item).css('zoom', zoomValue);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+@*@Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")*@

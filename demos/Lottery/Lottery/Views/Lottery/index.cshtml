@@ -1,0 +1,94 @@
+﻿@model int?
+<div class="lottery-panel lottery-premium-panel" style="zoom: 0.8">
+    <div class="luckydraw-premium-container">
+        <div class="top">
+            <div class="prize-block">
+                <div class="prize-wrap">
+                    <div></div>
+                    <div class="prize-info">
+                        @if (Model == 1)
+                        {
+                            <div class="info-wrap">海式M5家用电烤箱</div>
+                        }
+                        else if (Model == 2)
+                        {
+                            <div class="info-wrap">米家声波电动牙刷</div>
+                        }
+                        else if (Model == 3)
+                        {
+                            <!--HAYLOU-GT1-->
+                            <div class="info-wrap">HAYLOU真无线蓝牙耳机</div>
+                        }
+                        else if (Model == 4)
+                        {
+                            <div class="info-wrap">小米体重秤2</div>
+                        }
+                        else if (Model == 5)
+                        {
+                            <div class="info-wrap">德尔玛喷水拖把</div>
+                        }
+                        <div class="img-wrap">
+                            <div class="img">
+                                @if (Model == 1)
+                                {
+                                    <img src="@Url.Content("~/Resource/jiang1.png")" alt="" style="width:100%; height:100%">
+                                }
+                                else if (Model == 2)
+                                {
+                                    <img src="@Url.Content("~/Resource/jiang2.png")" alt="" style="width:100%; height:100%">
+                                }
+                                else if (Model == 3)
+                                {
+                                    <img src="@Url.Content("~/Resource/jiang3.png")" alt="" style="width:100%; height:100%">
+                                }
+                                else if (Model == 4)
+                                {
+                                    <img src="@Url.Content("~/Resource/jiang4.png")" alt="" style="width:100%; height:100%">
+                                }
+                                else if (Model == 5)
+                                {
+                                    <img src="@Url.Content("~/Resource/jiang5.png")" alt="" style="width:100%; height:100%">
+                                }
+                                else
+                                {
+                                    <img src="@Url.Content("~/Resource/liwu.png")" alt="" style="width:100%; height:100%">
+                                }
+                            </div>
+                        </div>
+                        <div class="name-wrap">
+                            <div class="name selectLevel">五等奖</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-container">
+                    <button class="btn-start" style="margin-right: 175px;">开&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;始</button>
+                    <button class="btn-price">中奖名单</button>
+                </div>
+            </div>
+            <!---->
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            var words = ['特', '一', '二', '三', '四', '五'];
+            var selectLevel = '@Model' - 0;
+            $('.selectLevel').text(words[selectLevel] + '等奖');
+            $('.btn-start').click(function () {
+                if (selectLevel >= 0) {
+                    $.get('@Url.Action("Start")?Level=' + selectLevel, function (result) {
+                        if (result.Status != 200) {
+                            alert(result.Msg);
+                        } else {
+                            location.href = '@Url.Action("Selector")?Level=' + selectLevel;
+                        }
+                    });
+                }
+            });
+            $('.btn-price').click(function () {
+                location.href = '@Url.Action("Price")?Level=' + selectLevel;
+            });
+        });
+    </script>
+}

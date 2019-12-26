@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--整个卡片的布局-->
+<!--
+    ID:卡ID； 
+    Name：卡片/或模板名称；    
+    Height：卡面高；
+    BackGround：卡背景色；
+    BorderColor：边框的颜色；
+    BorderWidth：边框的宽度；    
+    CardRange：卡的幅面；
+    CardDirection：卡片的方向；
+    MarginLeft：左边距；
+    MarginTop：顶边距；
+    MarginRight：右边距；
+    MarginBottom：底边距；
+    PrintScale：打印比例；
+    PrintAboveOffset：打印向上偏移
+    PrintUnderOffset：打印向下偏移
+    -->
+<ProcessCard Id="" Name="" Width="" Height=""  BackGround="" BorderColor=""
+      BorderWidth="" CardRange="" CardDirection="" MarginLeft="" MarginTop="" MarginRight="" MarginBottom=""
+      PrintScale="" PrintAboveOffset="" PrintUnderOffset="" ImageObjects="">
+  <!--卡片的实际内容-->
+
+  <!-- 
+      ID:行ID； 
+      Height：行高；
+      BackGround：行背景色；
+      BorderColor：边框的颜色； 
+      BorderWidth：边框的宽度；  -->
+  <Row Id="" Height="" BackGround="" BorderColor="" BorderWidth="">
+
+    <!--多种不同类型的单元格-->
+    <!-- 这里的不同类型(Type)是：
+      1.固定提示框
+      2.标题提示框
+      3.明细提示框
+      4.OLE对象
+      5.页码显示框
+      6.页数显示框-->
+
+    <!-- 
+      ID:   单元格ID； 
+      Name：单元格的名称； 
+      Width：单元格宽；
+      Type:  不同类型的单元格；
+      BackGround：单元格背景色；
+      BorderColor：单元格边框的颜色； 
+      BorderWidth：单元格边框的宽度； 
+      IsReadOnly: 是否只读；
+      FontSize： 单元格内的字体大小；
+      FontStyle： 单元格内的字体样式；
+      FontFamily： 单元格内的字体；
+      ForeColor： 单元格内的字体颜色；
+      RowSpan：当前单元格跨的行数；
+      ColSpan：当前单元格跨的列数；
+      Content: 单元格的内容
+      -->
+    <Cell Id="" Name="" Width="" Height="" Type="" PointX="" PointY="" CellType="" Alignment="" Padding="" BackGround="" LeftBorderColor="" TopBorderColor=""
+          RightBorderColor="" BottomBorderColor="" IsReadOnly="" LeftBorderWidth="" TopBorderWidth="" RightBorderWidth=""
+      BottomBorderWidth="" FontSize="" FontStyle="" FontFamily ="" ZoomFontSize="" ForeColor="" RowSpan="" ColSpan="" 
+          SpanCell="" Content="" LeftTopRightBottom="" LeftBottomRightTop="" WrapMode="" CellTag="" CellSource="">
+      <!--
+    
+    -->
+      <DetailCell Name=""
+    Tag=""
+    ProcessDetailLine=""
+    SerialNumber=""
+    Rows=""
+    DetailLine=""
+    Content=""
+    Source=""
+    Lans=""
+    Type=""
+    PerProcessRow=""
+    Length=""
+    SpaceRows=""
+    HeaderText=""
+    ColumnWidth=""
+    ColumnValue=""
+    AdvanceProperty=""
+    SerialStep="">
+      </DetailCell>
+    </Cell>
+  </Row>
+
+  <!--卡片的实际内容-->
+</ProcessCard>

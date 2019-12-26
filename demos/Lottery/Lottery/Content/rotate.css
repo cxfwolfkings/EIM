@@ -1,0 +1,109 @@
+.content {
+    width: 620px;
+    height: 620px;
+    margin: 0 auto;
+    margin-top: 4%;
+    position: relative;
+}
+
+canvas,
+.canvasOut1,
+.canvasIn1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto auto;
+}
+
+.canvasOut1 {
+    width: 540px;
+    height: 540px;
+    transition: all 3s ease;
+}
+
+.canvasOut2 {
+    width: 570px;
+    height: 570px;
+}
+
+.canvasOut3 {
+    width: 600px;
+    height: 600px;
+}
+
+.canvasPoint {
+    width: 600px;
+    height: 600px;
+}
+
+.canvasIn1 {
+    width: 280px;
+    height: 280px;
+    transition: all 3s ease;
+}
+
+.canvasIn2 {
+    width: 300px;
+    height: 300px;
+}
+
+.start {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto auto;
+}
+
+.zhen {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto auto;
+}
+
+.zhenIn {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto auto;
+}
+
+.rotationX {
+    transform: rotate(360deg);
+    animation: rotation 0.8s linear infinite;
+    -moz-animation: rotation 0.8s linear infinite;
+    -webkit-animation: rotation 0.8s linear infinite;
+    -o-animation: rotation 0.8s linear infinite;
+}
+
+/* 逐渐停止 */
+.rotationY {
+    animation: rotation ease-in 3s;
+    -moz-animation: rotation ease-in 3s;
+    -webkit-animation: rotation ease-in 3s;
+    -o-animation: rotation ease-in 3s;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}

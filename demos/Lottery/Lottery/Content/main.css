@@ -1,0 +1,629 @@
+html {
+    cursor: url('../Resource/c1.png'), auto;
+}
+
+body {
+    min-width        : 1040px;
+    background-color : rgba(51, 51, 51, 0.227450980392157);
+    background-image : url(../Resource/main.bmp);
+    background-repeat: no-repeat;
+    background-size  : 100%;
+}
+
+/* button {
+    cursor: url('../Resource/c2.png'), pointer !important;
+} */
+
+.navbar {
+    min-height: 90px;
+    height    : 90px;
+    min-width : 1040px;
+}
+
+.navbar-default {
+    background-color: #f6f2ea;
+}
+
+.navbar-nav .img-circle {
+    width       : 60px;
+    height      : 60px;
+    margin-top  : 5px;
+    margin-right: 40px;
+    position    : relative;
+    cursor      : pointer;
+}
+
+.navbar-nav .img-circle img {
+    position: absolute;
+    top     : 15px;
+    left    : 15px;
+}
+
+.navbar-nav .img-circle span {
+    position: absolute;
+    top     : 60px;
+    left    : 9px;
+}
+
+.luckydraw-premium-container {
+    width     : 100%;
+    overflow  : hidden;
+    box-sizing: border-box;
+    height    : 70%;
+}
+
+.luckydraw-premium-container .top {
+    position: relative;
+    height  : 815px;
+    padding : 20px 0;
+}
+
+.luckydraw-premium-container .top .prize-block {
+    position: relative;
+    width   : 932px;
+    height  : 717px;
+    margin  : 76px auto 0;
+}
+
+.luckydraw-premium-container .top .prize-block .prize-info {
+    position        : absolute;
+    top             : 0;
+    left            : 50%;
+    z-index         : -1;
+    margin-left     : -225px;
+    width           : 450px;
+    height          : 600px;
+    padding         : 39px;
+    border-style    : solid;
+    border-width    : 1px;
+    border-radius   : 20px;
+    border-color    : rgb(255, 19, 19);
+    background-color: rgba(92, 12, 15, 0.6);
+    box-shadow      : rgba(92, 12, 15, 0.6) 0px 0px 16px 0px, rgba(92, 12, 15, 0.6) 0px 0px 100px 0px inset;
+}
+
+.luckydraw-premium-container .top .prize-block .prize-info .img-wrap {
+    width           : 370px;
+    height          : 370px;
+    padding         : 15px;
+    border-style    : solid;
+    border-width    : 1px;
+    border-radius   : 235px;
+    border-color    : rgb(255, 19, 19);
+    background-color: rgba(92, 12, 15, 0.6);
+}
+
+.luckydraw-premium-container .top .prize-block .prize-info .img-wrap .img {
+    width            : 100%;
+    height           : 100%;
+    display          : -webkit-box;
+    display          : -ms-flexbox;
+    display          : flex;
+    -webkit-box-pack : center;
+    -ms-flex-pack    : center;
+    justify-content  : center;
+    -webkit-box-align: center;
+    -ms-flex-align   : center;
+    align-items      : center;
+}
+
+.bottom-container .luckydraw-premium-container .top .prize-block .prize-info .img-wrap .img img {
+    max-width : 100%;
+    max-height: 100%;
+}
+
+.luckydraw-premium-container .top .prize-block .prize-info .name-wrap {
+    display          : -webkit-box;
+    display          : -ms-flexbox;
+    display          : flex;
+    -webkit-box-pack : center;
+    -ms-flex-pack    : center;
+    justify-content  : center;
+    -webkit-box-align: center;
+    -ms-flex-align   : center;
+    align-items      : center;
+    width            : 100%;
+    height           : 152px;
+}
+
+.luckydraw-premium-container .top .prize-block .prize-info .name-wrap .name {
+    font-family: 'Arial Negreta', 'Arial';
+    font-weight: 700;
+    font-style : normal;
+    color      : #FFCC00;
+    font-size  : 32px;
+}
+
+.luckydraw-premium-container .top .prize-block .prize-info .info-wrap {
+    font-size  : 24px;
+    color      : #FFCC00;
+    text-align : center;
+    overflow   : hidden;
+    white-space: nowrap;
+    text-shadow: 5px 2px 6px #FFCC00;
+    height     : 50px;
+    margin-top : -20px;
+    font-family: 'Microsoft YaHei'
+}
+
+.luckydraw-premium-container>.bottom-container {
+    text-align: center;
+    margin-top: 1.5%;
+}
+
+.luckydraw-premium-container .top .prize-block .bottom-container {
+    position: absolute;
+    bottom  : 30px;
+    left    : 200px;
+}
+
+.bottom-container button,
+.bottom-container button:hover,
+.bottom-container button:focus,
+.bottom-container button:visited,
+.bottom-container button:active,
+.bottom-container button::selection {
+    background   : linear-gradient(180deg, rgba(255, 204, 0, 1) 0%, rgba(255, 204, 0, 1) 0%, rgba(255, 102, 0, 1) 100%, rgba(255, 102, 0, 1) 100%) !important;
+    border-width : 0px !important;
+    border-radius: 5px !important;
+    width        : 180px !important;
+    height       : 50px !important;
+    color        : white !important;
+    font-size    : 24px !important;
+    opacity      : 1 !important;
+    z-index      : 6 !important;
+    display      : inline-block;
+    text-align   : center;
+    cursor       : pointer;
+}
+
+.button-container {
+    width     : 100%;
+    position  : absolute;
+    bottom    : 12%;
+    text-align: center;
+}
+
+.ctrl-container {
+    position: absolute;
+    bottom  : -70px;
+    width   : 100%;
+}
+
+.ctrl-container button,
+.ctrl-container button:hover,
+.ctrl-container button:focus,
+.ctrl-container button:visited,
+.ctrl-container button:active,
+.ctrl-container button::selection {
+    background   : linear-gradient(180deg, rgba(255, 204, 0, 1) 0%, rgba(255, 204, 0, 1) 0%, rgba(255, 102, 0, 1) 100%, rgba(255, 102, 0, 1) 100%) !important;
+    border-width : 0px !important;
+    border-radius: 5px !important;
+    width        : 120px !important;
+    height       : 45px !important;
+    color        : white !important;
+    font-size    : 20px !important;
+    opacity      : 1 !important;
+    display      : inline-block;
+    text-align   : center;
+    cursor       : pointer;
+}
+
+.luckydraw-premium-container .player-avatars {
+    width           : 90%;
+    height          : 100%;
+    margin-left     : 5%;
+    border-color    : rgb(255, 19, 19);
+    background-color: rgba(92, 12, 15, 0.6);
+    box-shadow      : rgba(92, 12, 15, 0.6) 0px 0px 16px 0px, rgba(92, 12, 15, 0.6) 0px 0px 100px 0px inset;
+}
+
+.player-avatars .flex-area-item-list .row {
+    height: 100%;
+}
+
+.row1 {
+    height: 100% !important;
+}
+
+.row2 {
+    height: 50% !important;
+}
+
+.row3 {
+    height: 50% !important;
+}
+
+.row4 {
+    height: 33.3% !important;
+}
+
+.row5 {
+    height: 33.3% !important;
+}
+
+.player-avatars .flex-area-item-list .row .col {
+    width : 1012px;
+    height: 800px;
+}
+
+.col5 {
+    width : 289px !important;
+    height: 225px !important
+}
+
+.col4 {
+    width : 289px !important;
+    height: 225px !important
+}
+
+.col3 {
+    width : 405px !important;
+    height: 338px !important
+}
+
+.col2 {
+    width : 675px !important;
+    height: 338px !important
+}
+
+.col1 {
+    width : 1012px !important;
+    height: 800px !important
+}
+
+.player-avatars .flex-area-item-list .row .col .item {
+    width    : 600px;
+    height   : 600px;
+    transform: translate(-50%, -50%) scale(1.12667, 1.12667);
+}
+
+.item5 {
+    transform: translate(-50%, -50%) scale(0.375, 0.375) !important;
+}
+
+.item4 {
+    transform: translate(-50%, -50%) scale(0.375, 0.375) !important;
+}
+
+.item3 {
+    transform: translate(-50%, -50%) scale(0.56, 0.56) !important;
+}
+
+.item2 {
+    transform: translate(-50%, -50%) scale(0.56, 0.56) !important;
+}
+
+.item1 {
+    transform: translate(-50%, -50%) scale(1.12667, 1.12667) !important;
+}
+
+.avatar-bg {
+    background-image: url(../Resource/ring.png)
+}
+
+.premium-record {
+    display            : none;
+    border-image-source: url(../Resource/border.png);
+    animation-delay    : 0s;
+    color              : rgb(255, 255, 255);
+    width              : 75%;
+    height             : 90%;
+    margin-left        : 9%;
+}
+
+.premium-record .top,
+.premium-record .top .screenfont {
+    background-image: url(../Resource/ring.png);
+}
+
+.premium-record .lottery-record-list .row {
+    height: auto;
+}
+
+.premium-record .lottery-record-list .col {
+    width : 132.4px;
+    height: 152.134px;
+}
+
+.priceCol1 {
+    width : 670.3px !important;
+    height: 442.302px !important;
+}
+
+.priceCol2 {
+    width : 297.9px !important;
+    height: 228.201px !important;
+}
+
+.priceCol3 {
+    width : 198.6px !important;
+    height: 228.201px !important;
+}
+
+.priceCol4 {
+    width : 190px !important;
+    height: 170px !important;
+}
+
+.priceCol5 {
+    width : 130px !important;
+    height: 170px !important;
+}
+
+.premium-record .lottery-record-list .item {
+    width    : 673.6px;
+    height   : 774px;
+    transform: translate(-50%, -50%) scale(0.2, 0.2);
+}
+
+.priceItem1 {
+    transform: translate(-50%, -50%) scale(0.6, 0.6) !important;
+}
+
+.priceItem2 {
+    transform: translate(-50%, -50%) scale(0.3, 0.3) !important;
+}
+
+.priceItem3 {
+    transform: translate(-50%, -50%) scale(0.3, 0.3) !important;
+}
+
+.priceItem4 {
+    transform: translate(-50%, -50%) scale(0.2, 0.2) !important;
+}
+
+.priceItem5 {
+    transform: translate(-50%, -50%) scale(0.2, 0.2) !important;
+}
+
+.premium-record .lottery-record-list .item .wrap {
+    border-image-source: url(../Resource/border.png);
+    animation-delay    : 300ms;
+}
+
+.premium-record .lottery-record-list .item .image {
+    border-color    : rgb(0, 255, 255);
+    background-color: rgb(0, 28, 68);
+    width           : 100%;
+    height          : 448px;
+}
+
+.premium-record .lottery-record-list .item .light {
+    background-image: url(../Resource/ring.png);
+    animation-delay : 300ms;
+}
+
+.info-container {
+    width     : 100%;
+    height    : 40px;
+    position  : absolute;
+    top       : 10%;
+    text-align: center;
+}
+
+.info-desk {
+    width           : 60px;
+    height          : 100%;
+    display         : inline-block;
+    border          : 2px solid #B53C05;
+    background-color: #E85C10;
+    padding         : 3px;
+    border-radius   : 9px;
+    margin-left     : 110px;
+    margin-top      : 70px;
+}
+
+.info-desk>div {
+    width           : 100%;
+    height          : 100%;
+    border          : 1px solid #A23A06;
+    background-color: #EC721D;
+    padding         : 3px;
+    border-radius   : 4px;
+}
+
+.info-desk>div>div {
+    width   : 100%;
+    height  : 100%;
+    overflow: hidden;
+}
+
+.info-cart {
+    width           : 100%;
+    height          : 100%;
+    color           : black;
+    background-color: white;
+    border-radius   : 2px;
+}
+
+.info-cart span {
+    line-height: 24px;
+    font-size  : 16px;
+}
+
+/*.info-cart .empty,
+    .info-cart .text {
+        display       : inline-block;
+        vertical-align: middle;
+    }
+
+    .info-cart .empty {
+        height: 100%;
+    }*/
+
+.layui-layer-page {
+    background-color: rgba(0, 0, 0, 0) !important;
+    width           : 40% !important;
+    box-shadow      : 1px 1px 50px rgba(0, 0, 0, 0) !important;
+}
+
+.layui-layer-page .result-container {
+    text-align: center;
+}
+
+.layui-layer-page .result-container>img {
+    width           : 360px;
+    height          : 360px;
+    border          : 12px solid #ff6666;
+    background-color: white
+}
+
+.layui-layer-page .result-container>div {
+    letter-spacing  : 4px;
+    background-color: #ff6666;
+    border-width    : 0px;
+    color           : white;
+    width           : 360px;
+    height          : 70px;
+    line-height     : 70px;
+    margin          : 0px auto;
+    margin-top      : 60px;
+    font-size       : 30px
+}
+
+.premium-record .middle .swiper-slide {
+    padding: 0 15px 0px
+}
+
+.scroll-area-item-list {
+    margin-top: 20px;
+}
+
+.premium-record .lottery-record-list .record {
+    padding: 150px 60px;
+}
+
+.paiContainer {
+    background-image : url(../Resource/yao.png);
+    background-repeat: no-repeat;
+    background-size  : 100%;
+    width            : 1200px;
+    height           : 630px;
+    margin           : 0 auto;
+    margin-top       : 4%;
+    position         : relative;
+}
+
+.paiContainer .pai {
+    position: absolute;
+    width   : 360px;
+    height  : 260px;
+    top     : 210px;
+    display : inline-block;
+}
+
+.paiContainer .pai1 {
+    left        : 190px;
+    border-right: thick double #a55f38;
+}
+
+.paiContainer .pai2 {
+    left       : 550px;
+    border-left: thick double #a55f38;
+}
+
+.paiContainer .pai>div {
+    background-color: white;
+    background-color: #ffc7a8;
+    height          : 100%;
+    overflow        : hidden;
+}
+
+.imgContainer {
+    background-color: #fdc5a7;
+    height          : 100%;
+    font-size       : 150px;
+    text-align      : center;
+    line-height     : 260px;
+    font-family     : 'KaiTi';
+    font-weight     : bold;
+}
+
+.paiContainer .btn-control {
+    position: absolute;
+    right   : 135px;
+    top     : 180px;
+    width   : 100px;
+    height  : 130px;
+    cursor  : pointer;
+}
+
+.moveStart {
+    /* Y轴上表示上升 */
+    transition        : all 1s ease-out;
+    -moz-transition   : all 1s ease-out;
+    -webkit-transition: all 1s ease-out;
+}
+
+.moveSpeed1 {
+    transition        : all 0.8s ease-out;
+    -moz-transition   : all 0.8s ease-out;
+    -webkit-transition: all 0.8s ease-out;
+}
+
+.moveSpeed2 {
+    transition        : all 0.5s ease-out;
+    -moz-transition   : all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+}
+
+.moveSpeed3 {
+    transition        : all 0.2s ease-out;
+    -moz-transition   : all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+}
+
+.moveUp {
+    transition        : all .1s ease-out;
+    -moz-transition   : all .1s ease-out;
+    -webkit-transition: all .1s ease-out;
+}
+
+.moveTarget {
+    transition        : all 1.5s ease-out;
+    -moz-transition   : all 1.5s ease-out;
+    -webkit-transition: all 1.5s ease-out;
+}
+
+.moveTarget2 {
+    transition        : all 3s ease-out;
+    -moz-transition   : all 3s ease-out;
+    -webkit-transition: all 3s ease-out;
+}
+
+.moveTarget3 {
+    transition        : all 4s ease-out;
+    -moz-transition   : all 4s ease-out;
+    -webkit-transition: all 4s ease-out;
+}
+
+.mock-yao {
+    position: absolute;
+    right   : 135px;
+    top     : 180px;
+    width   : 100px;
+    height  : 130px;
+    display : none;
+}
+
+.mock-yao img {
+    width: 100%;
+}
+
+.mock-wait {
+    height: 140px;
+}
+
+.mock-wait img {
+    height: 100%;
+}
+
+.title-info {
+    position      : absolute;
+    left          : 500px;
+    font-size     : 30px;
+    color         : white;
+    top           : 138px;
+    letter-spacing: 15px;
+}

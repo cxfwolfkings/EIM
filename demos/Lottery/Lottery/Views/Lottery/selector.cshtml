@@ -1,0 +1,185 @@
+﻿@section styles {
+    <link rel="stylesheet" href="@Url.Content("~/Content/selector.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/app.css")">
+}
+<div class="lottery-panel lottery-premium-panel" style="zoom: 0.7;align-items:baseline;">
+    <div class="luckydraw-premium-container" style="margin-top: 90px">
+        <div class="player-avatars">
+            <div data-v-2fec486a="" class="flex-area-item-list">
+            </div>
+        </div>
+    </div>
+    <div class="bottom-container button-container">
+        <button type="button" class="btn btn-stop" style="font-size:22px">停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;止</button>
+        @*<button type="button" class="btn btn-default btn-lg btn-price">中奖名单</button>*@
+    </div>
+</div>
+<div class="premium-record" style="zoom:1">
+    <div class="top" style="padding-top:12px">
+        <div style="font-size:30px;letter-spacing: 9px;color:gold;text-shadow: 5px 2px 6px gold;"">中奖名单</div>
+        <div class="screenfont icon-close close-icon"></div>
+    </div>
+    <div class="middle">
+        <div class="lottery-record-list">
+            <div class="swiper-container lottery-record-swiper swiper-container-initialized swiper-container-horizontal">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide-active" style="width: 100%;">
+                        <div data-v-cf0a5884="" class="scroll-area-item-list" scroll="true" style="overflow-y: auto;"></div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="turn"></div>*@
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            var app = window.app;
+
+            var rolTempHtml = '<div data-v-2fec486a="" class="row">{0}</div>'
+            var colTempHtml = '<div data-v-2fec486a="" class="col">\
+                                <div data-v-2fec486a="" class="item">\
+                                  <div data-v-2fec486a="" class="luckydraw-premium-avatar-item on">\
+                                    <div data-v-2fec486a="" class="avatar-bg"></div>\
+                                    <img data-v-2fec486a="" src="{0}">\
+                                  </div>\
+                                </div>\
+                              </div>';
+
+            var selectLevel = app.getQueryVariable('Level') - 0;
+
+            var rowNum = 0;
+            var colNum = 0;
+            var totalNum = 0;
+            var colPriceNum = 0;
+
+            switch (selectLevel) {
+                case 0:
+                case 1:
+                    rowNum = 1;
+                    colNum = 1;
+                    totalNum = 1;
+                    colPriceNum = 1;
+                    //$('.turn').text('一等奖');
+                    break;
+                case 2:
+                    rowNum = 2;
+                    colNum = 3;
+                    totalNum = 5;
+                    colPriceNum = 3;
+                    //$('.turn').text('二等奖');
+                    break;
+                case 3:
+                    rowNum = 2;
+                    colNum = 5;
+                    totalNum = 10;
+                    colPriceNum = 5;
+                    //$('.turn').text('三等奖');
+                    break;
+                case 4:
+                    rowNum = 3;
+                    colNum = 5;
+                    totalNum = 15;
+                    colPriceNum = 5;
+                    //$('.turn').text('四等奖');
+                    break;
+                case 5:
+                    rowNum = 3;
+                    colNum = 7;
+                    totalNum = 20;
+                    colPriceNum = 7;
+                    //$('.turn').text('五等奖');
+                    break;
+            }
+
+            var rootImgUrl = '@Url.Content("~/Resource/1.jpg")';
+            rootImgUrl = rootImgUrl.substring(0, rootImgUrl.lastIndexOf('/') + 1);
+
+            var appendHtml = '';
+            for (var i = 0; i < rowNum; i++) {
+                appendHtml += rolTempHtml;
+                var everyRowHtml = '';
+                for (var j = 0; j < colNum && (i + 1) * (j + 1) <= totalNum; j++) {
+                    everyRowHtml += colTempHtml.replace('{0}', rootImgUrl + app.getRandom() + '.jpg');
+                }
+                appendHtml = appendHtml.replace('{0}', everyRowHtml);
+            }
+            $('.player-avatars .flex-area-item-list').append(appendHtml);
+
+            initItemClass();
+
+            var interValId = setInterval(function () {
+                $('.player-avatars img').each(function (index, elem) {
+                    // var srcIndex = $(elem).attr('src').split('/')[1].split('.')[0] - 0;
+                    $(elem).attr('src', rootImgUrl + app.getRandom() + '.jpg');
+                });
+            }, 100);
+
+            $('.btn-stop').click(function () {
+                clearInterval(interValId);
+                $('.luckydraw-premium-avatar-item').removeClass('on');
+
+                var imgNames = [];
+                $('.player-avatars img').each(function (index, item) {
+                    imgNames.push($(item).attr('src'));
+                });
+
+                var colPriceHtml = '<div data-v-cf0a5884="" class="col">\
+                                  <div data-v-cf0a5884="" class="item">\
+                                    <div data-v-cf0a5884="" index="0" class="record animation">\
+                                      <div data-v-cf0a5884="" class="wrap">\
+                                        <div data-v-cf0a5884="" class="image">\
+                                          <img data-v-cf0a5884="" src="{0}">\
+                                        </div>\
+                                        <div data-v-cf0a5884="" class="name winner"></div>\
+                                      </div>\
+                                      <div data-v-cf0a5884="" class="light"></div>\
+                                    </div>\
+                                  </div>\
+                                </div>';
+
+                var priceHtml = '<div data-v-cf0a5884="" class="row">';
+                $.each(imgNames, function (index, item) {
+                    if (index > 0 && index % colPriceNum == 0) {
+                        priceHtml += '</div><div data-v-cf0a5884="" class="row">';
+                    }
+                    priceHtml += colPriceHtml.replace('{0}', item);
+                });
+                priceHtml += '</div>';
+
+                $('.scroll-area-item-list').append(priceHtml);
+
+                var styleType = selectLevel == 0 ? 1 : selectLevel;
+                $('.premium-record .lottery-record-list .col').addClass('priceCol' + styleType);
+                $('.premium-record .lottery-record-list .item').addClass('priceItem' + styleType);
+
+                $.get('@Url.Action("Win")?Level=' + selectLevel, function (result) {
+                    if (result.Status == 200) {
+                        $('.winner').each(function (index, item) {
+                            $(item).text(result.Data[index].UserNo + " " + result.Data[index].UserName);
+                        });
+                        setTimeout(function () {
+                            $('.lottery-panel').hide();
+                            $('.button-container').hide();
+                            $('.premium-record').show();
+                        }, 600);
+                    }
+                });
+            });
+
+            $('.icon-close').click(function () {
+                location.href = '@Url.Action("Index")?Level=' + selectLevel;
+            });
+
+            function initItemClass() {
+                // $('.player-avatars .flex-area-item-list .row').removeClass('row5 row4');
+                // $('.player-avatars .flex-area-item-list .col').removeClass('col5 col4');
+                // $('.player-avatars .flex-area-item-list .item').removeClass('item5 item4');
+                $('.player-avatars .flex-area-item-list .row').addClass('row' + selectLevel);
+                $('.player-avatars .flex-area-item-list .col').addClass('col' + selectLevel);
+                $('.player-avatars .flex-area-item-list .item').addClass('item' + selectLevel);
+            }
+        });
+    </script>
+}

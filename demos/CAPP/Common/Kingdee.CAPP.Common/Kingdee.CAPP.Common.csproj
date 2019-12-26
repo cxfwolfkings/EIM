@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{139985F1-0795-44DF-B871-1CFF9BF55039}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kingdee.CAPP.Common</RootNamespace>
+    <AssemblyName>Kingdee.CAPP.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\ReferenceDlls\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cache\CacheFactory.cs" />
+    <Compile Include="Cache\ICacheProvider.cs" />
+    <Compile Include="Cache\MemoryCahce.cs" />
+    <Compile Include="Cache\SerializationHelper.cs" />
+    <Compile Include="Cache\SerializedMemoryCache.cs" />
+    <Compile Include="ComboBoxSourceHelper.cs" />
+    <Compile Include="CommonHelper.cs" />
+    <Compile Include="ControlOperator.cs" />
+    <Compile Include="DataGridViewHelp\CardDetailPropertyFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataGridViewHelp\CardDetailPropertyFrm.designer.cs">
+      <DependentUpon>CardDetailPropertyFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewHelp\CustomerCellStyleEditor.cs" />
+    <Compile Include="DataGridViewHelp\CustomerEditor.cs" />
+    <Compile Include="DataGridViewHelp\DataGridViewCellExHelper.cs" />
+    <Compile Include="DataGridViewHelp\DataGridViewCellStyleFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataGridViewHelp\DataGridViewCellStyleFrm.Designer.cs">
+      <DependentUpon>DataGridViewCellStyleFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridViewHelp\DataGridViewHelper.cs" />
+    <Compile Include="DataGridViewHelp\DataGridViewTextBoxCellEx.cs" />
+    <Compile Include="DataGridViewHelp\ISpannedCell.cs" />
+    <Compile Include="DataGridViewHelp\SourceEditor.cs" />
+    <Compile Include="DataGridViewHelp\SourceFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataGridViewHelp\SourceFrm.Designer.cs">
+      <DependentUpon>SourceFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileRegister\FileTypeRegInfo.cs" />
+    <Compile Include="FileRegister\FileTypeRegister.cs" />
+    <Compile Include="Logger\ColorLogger.cs" />
+    <Compile Include="Logger\DataXmlNotFound.cs" />
+    <Compile Include="Logger\DateFormat.cs" />
+    <Compile Include="Logger\FileLogger.cs" />
+    <Compile Include="Logger\LogHandler.cs" />
+    <Compile Include="Logger\ILog.cs" />
+    <Compile Include="Logger\LevelParser.cs" />
+    <Compile Include="Logger\LogConfig.cs" />
+    <Compile Include="Logger\LogFactory.cs" />
+    <Compile Include="Logger\LogFileMover.cs" />
+    <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Logger\LogLevel.cs" />
+    <Compile Include="Logger\LogSizeChecker.cs" />
+    <Compile Include="Logger\XmlLogger.cs" />
+    <Compile Include="MaterialCalc.cs" />
+    <Compile Include="ModleHelper\ModleHandler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertySorter.cs" />
+    <Compile Include="ResourceNotice.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ResourceNotice.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Serialize\SerializeHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataGridViewHelp\CardDetailPropertyFrm.resx">
+      <DependentUpon>CardDetailPropertyFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridViewHelp\DataGridViewCellStyleFrm.resx">
+      <DependentUpon>DataGridViewCellStyleFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridViewHelp\SourceFrm.resx">
+      <DependentUpon>SourceFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResourceNotice.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResourceNotice.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\min_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimumsize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minimum_d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close_d.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

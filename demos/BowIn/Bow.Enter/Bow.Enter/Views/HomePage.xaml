@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
+             BarBackgroundColor="Green"
+             BarTextColor="White"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             android:TabbedPage.BarItemColor="#FFFFFF"
+             android:TabbedPage.BarSelectedItemColor="White"
+             xmlns:local="clr-namespace:Bow.Enter.Views"
+             x:Class="Bow.Enter.Views.HomePage">
+    <!--<windows:TabbedPage.HeaderIconsSize>
+        <Size>
+            <x:Arguments>
+                <x:Double>24</x:Double>
+                <x:Double>24</x:Double>
+            </x:Arguments>
+        </Size>
+    </windows:TabbedPage.HeaderIconsSize>-->
+    <!--Pages can be added as references or inline-->
+    <local:FunctionPage Title="功能" Icon="homeFunctions.png"/>
+    <local:AddressPage Title="通讯录" Icon="homeAddress.png"/>
+    <local:AccountPage Title="账户" Icon="homeAccount.png"/>
+</TabbedPage>

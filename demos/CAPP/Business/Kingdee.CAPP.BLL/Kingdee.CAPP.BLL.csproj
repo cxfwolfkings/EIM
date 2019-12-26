@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3AD822D2-ABEA-4D22-B082-ED3D62D94048}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kingdee.CAPP.BLL</RootNamespace>
+    <AssemblyName>Kingdee.CAPP.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\ReferenceDlls\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.Proway, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CardManagerBLL.cs" />
+    <Compile Include="MaterialCardRelationBLL.cs" />
+    <Compile Include="MaterialModuleBLL.cs" />
+    <Compile Include="MaterialQuotaBLL.cs" />
+    <Compile Include="PlanningCardRelationBLL.cs" />
+    <Compile Include="ProcessCardBLL.cs" />
+    <Compile Include="ProcessCardModuleBLL.cs" />
+    <Compile Include="ProcessPlanningModuleBLL.cs" />
+    <Compile Include="ProcessPlanningBLL.cs" />
+    <Compile Include="ProductModuleBLL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerControllerBLL.cs" />
+    <Compile Include="TypicalProcessBLL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\Kingdee.CAPP.Common\Kingdee.CAPP.Common.csproj">
+      <Project>{139985F1-0795-44DF-B871-1CFF9BF55039}</Project>
+      <Name>Kingdee.CAPP.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingdee.CAPP.DAL\Kingdee.CAPP.DAL.csproj">
+      <Project>{0D88815B-0B46-4E48-8186-1883771C4F5D}</Project>
+      <Name>Kingdee.CAPP.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kingdee.CAPP.Model\Kingdee.CAPP.Model.csproj">
+      <Project>{F9D2B200-47C6-4E1E-A5B3-53558DED8167}</Project>
+      <Name>Kingdee.CAPP.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Proway">
+      <Guid>{A2BAF861-39BB-4B30-ACCC-048E7D93DE25}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

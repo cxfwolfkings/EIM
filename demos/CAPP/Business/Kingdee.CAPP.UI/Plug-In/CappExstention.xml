@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <!--菜单栏-->
+  <!--<menu name="三维工艺" menuPosition="5">
+    <submenu name="1子插件1" assemblyName="Kingdee.CAPP.UI.Test"></submenu>
+  </menu>
+  <menu name="1插件" menuPosition="5">
+    <submenu name="1子插件1" assemblyName="Kingdee.CAPP.UI.Test"></submenu>
+  </menu>-->
+  <ToolBars>
+    <Tool Name="New" Icon="Resources\new.png" Tooltip="新建" CommandName="New" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Open" Icon="Resources\open.png" Tooltip="打开" CommandName="Open" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Save" Icon="Resources\save.png" Tooltip="保存" CommandName="Save" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <!--<Tool Name="SaveAll" Icon="Resources\saveall.png" Tooltip="保存所有" CommandName="SaveALL" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>-->
+    <Tool Name="Data" Icon="Resources\data1.png" Tooltip="入库" CommandName="Data" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Split" Icon="" Tooltip="" CommandName="" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Meger" Icon="Resources\meger.png" Tooltip="合并" CommandName="Meger" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="UnMeger" Icon="Resources\unmeger.png" Tooltip="取消合并" CommandName="UnMeger" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Split" Icon="" Tooltip="" CommandName="" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Symbol" Icon="Resources\symbl.png" Tooltip="特殊符号" CommandName="Symbol" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Roughness" Icon="Resources\roughness.png" Tooltip="粗糙度" CommandName="Roughness" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Welding" Icon="Resources\welding.png" Tooltip="焊接符号" CommandName="Welding" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="ShapeTolerance" Icon="Resources\shape.png" Tooltip="形位公差" CommandName="ShapeTolerance" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Tolerance" Icon="Resources\tolerance.png" Tooltip="公差标注" CommandName="Tolerance" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Subscrip" Icon="Resources\subscrip.png" Tooltip="上标下标" CommandName="Subscrip" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Split" Icon="" Tooltip="" CommandName="" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="Image" Icon="Resources\imageobj.png" Tooltip="图片文件" CommandName="Image" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+    <Tool Name="OleObject" Icon="Resources\oleobject.png" Tooltip="OLE对象" CommandName="OleObject" FormName="Kingdee.CAPP.UI.MainFrm"></Tool>
+  </ToolBars>
+</root>

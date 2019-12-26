@@ -1,0 +1,121 @@
+﻿@model Int32
+@section styles {
+    <style>
+        .bottom-container {
+            text-align: center;
+        }
+    </style>
+}
+<div class='paiContainer' style="zoom:0.9">
+    <div class="pai pai1">
+        <div>
+            <div class="moveItem">
+                @for (var i = 0; i < Model / 10 + 1; i++)
+                {
+                    <div class="imgContainer">@i</div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="pai pai2">
+        <div>
+            <div id="seat-div" class="moveItem">
+                @for (var i = 0; i < 10; i++)
+                {
+                    <div class="imgContainer">@i</div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="mock-down mock-yao"><img src="@Url.Content("~/Resource/down.png")"></div>
+    <div class="mock-wait mock-yao"><img src="@Url.Content("~/Resource/wait.png")"></div>
+    <div class="btn-control"></div>
+    <div class="title-info">惊喜奖</div>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            var desks = '@Model' - 0;
+            // 最终结果
+            var resultDesk = 0;
+            var curDesk = 0;
+            var curSeat = 0;
+            var interValDeskId = 0;
+            var isYao = 1;
+            $('.btn-control').click(function () {
+                if (isYao === 1) {
+                    resultDesk = Math.ceil(Math.random() * desks);
+                    isYao = 2;
+                    $('.mock-down').show();
+                    $('.btn-control').css('top', '240px');
+                    $('.btn-control').show();
+                    $('.moveItem').addClass('moveUp');
+                    interValDeskId = setInterval(changeSelectDesk, 100);
+                } else if (isYao === 2) {
+                    isYao = 0;
+                    var tempDesk = Math.floor(resultDesk / 10);
+                    var tempSeat = resultDesk % 10;
+                    curDesk = Math.floor(resultDesk / 10);
+                    curSeat = resultDesk % 10;
+                    if (tempDesk >= Math.floor(desks / 2)) {
+                        tempDesk -= Math.floor(desks / 2);
+                    } else {
+                        tempDesk += Math.floor(desks / 2);
+                    }
+                    if (tempSeat >= 5) {
+                        tempSeat -= 4;
+                    } else {
+                        tempSeat += 4;
+                    }
+                    clearInterval(interValDeskId);
+                    moveUp($('.pai1 .moveItem'), tempDesk, 259.56);
+                    moveUp($('.pai2 .moveItem'), tempSeat, 259.56);
+                    $('.btn-control').css('top', '180px');
+                    $('.btn-control').hide();
+                    $('.mock-down').hide();
+                    $('.mock-wait').show();
+                    $('.moveItem').removeClass('moveUp');
+                    $('.pai1 .moveItem').addClass('moveTarget');
+                    $('.pai2 .moveItem').addClass('moveTarget2');
+                    moveUp($('.pai1 .moveItem'), curDesk, 259.56);
+                    moveUp($('.pai2 .moveItem'), curSeat, 259.56);
+                    setTimeout(function () {
+                        isYao = 1;
+                        $('.pai1 .moveItem').removeClass('moveTarget');
+                        $('.pai2 .moveItem').removeClass('moveTarget2');
+                        $('.btn-control').show();
+                        $('.mock-down').hide();
+                        $('.mock-wait').hide();
+                        layer.open({
+                            type: 1,
+                            title: false,
+                            skin: 'layui-layer-demo', // 样式类名
+                            closeBtn: 0, // 不显示关闭按钮
+                            anim: 2,
+                            shadeClose: true, // 开启遮罩关闭
+                            content: `<div class="result-container">\
+                            <img src="@Url.Content("~/Resource/winner2.gif")" class="img-circle">\
+                            <br>\
+                            <div>${resultDesk}&nbsp;&nbsp;桌</div>\
+                          </div>`
+                        });
+                    }, 3000);
+                }
+            });
+
+            function changeSelectDesk() {
+                curDesk++;
+                curDesk = curDesk > Math.floor(desks / 10) ? 0 : curDesk;
+                curSeat++;
+                curSeat = curSeat > 9 ? 0 : curSeat;
+                moveUp($('.pai1 .moveItem'), curDesk, 259.56);
+                moveUp($('.pai2 .moveItem'), curSeat, 259.56);
+            }
+
+            function moveUp($item, deskNo, itemHeight) {
+                $item.css('transform', 'translateY(-' + itemHeight * deskNo + 'px)');
+            }
+        });
+    </script>
+}

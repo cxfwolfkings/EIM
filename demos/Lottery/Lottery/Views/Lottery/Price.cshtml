@@ -1,0 +1,134 @@
+@model Dictionary<string, string>
+@section styles {
+    <link rel="stylesheet" href="@Url.Content("~/Content/selector.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/app.css")">
+    <style>
+        .premium-record .middle .swiper-slide {
+            padding: 0 28px 28px;
+        }
+
+        .scroll-area-item-list .row {
+            margin: 15px 15px;
+        }
+
+            .scroll-area-item-list .row .col-md-2 {
+                font-size: 28px;
+                font-weight: bold
+            }
+
+            .scroll-area-item-list .row .col-md-10 {
+                text-align: left
+            }
+
+            .scroll-area-item-list .row span {
+                display: inline-block;
+                width: 140px;
+                font-size: 25px
+            }
+    </style>
+}
+<div class="premium-record">
+    <div class="top" style="padding-top:12px">
+        <div style="font-size:30px;letter-spacing: 9px;color:gold;text-shadow: 5px 2px 6px gold;">中奖名单</div>
+        <div class="screenfont icon-close close-icon"></div>
+    </div>
+    <div class="middle">
+        <div class="lottery-record-list">
+            <div class="swiper-container lottery-record-swiper swiper-container-initialized swiper-container-horizontal">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-slide-active" style="width: 100%;">
+                        <div data-v-cf0a5884="" class="scroll-area-item-list" scroll="true" style="overflow-y: hidden; color: #FFCC00;">
+                            @if (Model.ContainsKey("0"))
+                            {
+                                <div class="row">
+                                    <div class="col-md-2">特等奖</div>
+                                    <div class="col-md-10" style="line-height:40px">
+                                        @foreach (var user in Model["0"].Split(';'))
+                                        {
+                                            <span>@user.Split(':')[0]</span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                            <div class="row">
+                                <div class="col-md-2">一等奖</div>
+                                <div class="col-md-10" style="line-height:40px">
+                                    @if (Model.ContainsKey("1"))
+                                    {
+                                        foreach (var user in Model["1"].Split(';'))
+                                        {
+                                            <span>@user.Split(':')[0]</span>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">二等奖</div>
+                                <div class="col-md-10" style="line-height:40px">
+                                    @if (Model.ContainsKey("2"))
+                                    {
+                                        foreach (var user in Model["2"].Split(';'))
+                                        {
+                                            <span>@user.Split(':')[0]</span>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">三等奖</div>
+                                <div class="col-md-10">
+                                    @if (Model.ContainsKey("3"))
+                                    {
+                                        foreach (var user in Model["3"].Split(';'))
+                                        {
+                                            <span>@user.Split(':')[0]</span>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">四等奖</div>
+                                <div class="col-md-10">
+                                    @if (Model.ContainsKey("4"))
+                                    {
+                                        foreach (var user in Model["4"].Split(';'))
+                                        {
+                                            <span>@user.Split(':')[0]</span>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2">五等奖</div>
+                                <div class="col-md-10">
+                                    @if (Model.ContainsKey("5"))
+                                    {
+                                        foreach (var user in Model["5"].Split(';'))
+                                        {
+                                            <span>@user.Split(':')[0]</span>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div>
+        <img src="@Url.Content("~/Resource/3.gif")" />
+    </div>*@
+</div>
+@section scripts {
+    <script>
+        $(function () {
+            var app = window.app;
+            var selectLevel = app.getQueryVariable('Level') - 0;
+            $('.premium-record').show();
+            $('.icon-close').click(function (index, item) {
+                location.href = '@Url.Action("Index")?Level=' + selectLevel;
+            });
+        })
+    </script>
+}

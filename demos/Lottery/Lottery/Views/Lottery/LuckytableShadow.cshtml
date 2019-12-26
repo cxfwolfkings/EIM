@@ -1,0 +1,112 @@
+﻿@model Int32
+@section styles {
+    <link rel="stylesheet" href="@Url.Content("~/Content/rotate.css")">
+    <style>
+        .bottom-container {
+            text-align: center;
+        }
+    </style>
+}
+<div class='content panContent' style="zoom:0.9">
+    <canvas id='canvasOut3' class='canvasOut3' width="600" height="600"></canvas>
+    <canvas id='canvasOut2' class='canvasOut2' width="570" height="570"></canvas>
+    <div class='canvasOut1' id='rotate'>
+        <canvas id="canvasOut1" class='canvasOut1' width="550" height="550"></canvas>
+    </div>
+    <img class='start' src='@Url.Content("~/Resource/point2.jpg")' id="start"
+         style="width:90px;height:232px;margin-top:125px" />
+    <div class="bottom-container ctrl-container">
+        <button type="button" class="btn btn-control" style="margin-right:0px">开&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;始</button>
+    </div>
+</div>
+<div class="info-container">
+    <div class="info-desk">
+        <div>
+            <div>
+                <div class="moveUp">
+                    @for (var i = 0; i < Model; i++)
+                    {
+                        <div class="info-cart">
+                            @*<span class="empty"></span>*@
+                            <span class="text">@(i + 1)桌</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="@Url.Content("~/Scripts/rotate.js")"></script>
+    <script>
+        $(function () {
+            // 阴影页删除导航条
+            $('.navbar-fixed-bottom').remove();
+            $('.navControl').remove();
+
+            var app = window.app;
+            var desks = '@Model' - 0;
+            var minDegree = Math.round(360 / desks);
+
+            var Lottey = new app.lottery({
+                canvasOut1: document.getElementById('canvasOut1'),
+                canvasOut2: document.getElementById('canvasOut2'),
+                canvasOut3: document.getElementById('canvasOut3')
+            });
+            var colors = ["#fbae27", "#f9be34"];
+            var text = ["一号桌", "", "", "", "", "", "", "", "", ""];
+            Lottey.init(text.length, colors, text, 0)
+
+            var interValDeskId = 0;
+
+            //document.getElementById('rotate').addEventListener('webkitTransitionEnd', rmInterval);
+
+            var isOutProcess = false;
+            $('.btn-control').click(function () {
+                if (isOutProcess) {
+                    isOutProcess = false;
+                    window.parent.app.stopLottery();
+                    window.parent.$('iframe').hide();
+                    clearInterval(Lottey.mytime);
+                    $('.btn-control').html('开&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;始');
+                    $('#rotate').removeClass('rotationX');
+                    clearInterval(interValDeskId);
+                } else {
+                    isOutProcess = true;
+                    // 开始闪烁
+                    Lottey.mytime = setInterval(Lottey.getCanvasOut2.bind(Lottey), 200);
+                    $('.btn-control').html('停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;止');
+                    $('#rotate').addClass('rotationX');
+                    interValDeskId = setInterval(changeSelectDesk, 40);
+                }
+            });
+
+            function changeSelectDesk() {
+                var deskNo = 0;
+                var degree = app.getRotate("rotate");
+                if (degree > 0) {
+                    degree = 360 - degree;
+                } else {
+                    degree = 0 - degree;
+                }
+                if (degree <= 18) {
+                    deskNo =  Math.ceil(degree / minDegree);
+                } else {
+                    deskNo = Math.ceil((degree + 18) / minDegree);
+                }
+                // console.log('当前选中：' + deskNo + " -> " + degree);
+                // 翻牌到对应桌号
+                moveUp(deskNo, 24);
+                return deskNo;
+            }
+
+            function moveUp(deskNo, itemHeight) {
+                //var curMarginTop = $('.info-desk .info-cart:first').css('marginTop');
+                //curMarginTop = curMarginTop.replace('px', '');
+                //var newMarginTop = 0 - itemHeight * (deskNo - 1);
+                //$('.info-desk .info-cart:first').css('marginTop', newMarginTop + 'px');
+                $('.moveUp').css('transform', 'translateY(-' + itemHeight * (deskNo - 1) + 'px)');
+            }
+        });
+    </script>
+}

@@ -1,0 +1,12 @@
+ private void PrintForm_Paint(object sender, PaintEventArgs e)
+        {
+            CommonFuc.IsDrawAll = false;
+            CommonFuc.DrawFromTitle(e.Graphics, "¥Ú”°", this.Width, this.Height);
+        }
+
+        
+
+        private void PrintForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            CommonFuc.MouseDown(this);
+        }

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ParameterSource>  
+  <Source id="Product" name="物料">
+    <content id="TotalNumber">总图号</content>
+    <content id="Name">名称</content>
+    <content id="Model">型号</content>
+    <content id="Remark">备注</content>
+    <content id="Specification">产品规格</content>
+    <content id="ParentDrawNo">父图号</content>
+    <content id="ParentDrawName">父图名</content>
+    <content id="Remark">备注</content>
+    <content id="DrawNumber">图号</content>
+    <content id="Detail">材料</content>
+    <content id="SerialNo">序号</content>
+    <content id="SingleWeight">单重</content>
+    <content id="Weight">重量</content>
+    <content id="Pieces">件数</content>
+    <content id="SinglePieces">单台总件数</content>
+  </Source>
+  <Source id="Process" name="工序">
+    <content id="code">编号</content>
+    <content id="Name">名称</content>
+    <content id="SerialNo">序号</content>
+  </Source>
+  <Source id="Routing" name="工艺路线">
+    <content id="code">编号</content>
+    <content id="Name">名称</content>
+    <content id="SerialNo">序号</content>
+  </Source>
+</ParameterSource>

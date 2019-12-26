@@ -1,0 +1,171 @@
+﻿@model Int32
+@section styles {
+    <link rel="stylesheet" href="@Url.Content("~/Content/rotate.css")">
+    <style>
+        .bottom-container {
+            text-align: center;
+        }
+    </style>
+}
+<div class='content panContent' style="zoom:0.9">
+    <canvas id='canvasOut3' class='canvasOut3' width="600" height="600"></canvas>
+    <canvas id='canvasOut2' class='canvasOut2' width="570" height="570"></canvas>
+    <div class='canvasOut1' id='rotate'>
+        <canvas id="canvasOut1" class='canvasOut1' width="550" height="550"></canvas>
+    </div>
+    <canvas id='canvasIn2' class='canvasIn2' width="400" height="400"></canvas>
+    <div class='canvasIn1' id='rotateIn'>
+        <canvas id="canvasIn1" class='canvasIn1' width="380" height="380"></canvas>
+    </div>
+    <img class='start' src='@Url.Content("~/Resource/pan.png")' id="start" style="width:160px;height:150px" />
+    <canvas id='canvasPoint' class='canvasPoint' width="600" height="600"></canvas>
+    <div class="bottom-container ctrl-container">
+        <button type="button" class="btn btn-selDesk" style="margin-right:40%; margin-top:-5%">选取桌位</button>
+        <button type="button" class="btn btn-selDesk-shadow" style="margin-right:40%; margin-top:-5%;display:none">选取桌位</button>
+        <button type="button" class="btn btn-selSeat" style="margin-right:0px; margin-top:-5%">选取座位</button>
+        <button type="button" class="btn btn-selSeat-shadow" style="margin-right:0px; margin-top:-5%;display:none">选取座位</button>
+    </div>
+</div>
+<div class="info-container">
+    <div class="info-desk">
+        <div>
+            <div>
+                <div class="moveItem">
+                    @for (var i = 0; i < Model; i++)
+                    {
+                        <div class="info-cart">
+                            @*<span class="empty"></span>*@
+                            <span class="text">@(i + 1)桌</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="@Url.Content("~/Scripts/rotate.js")"></script>
+    <script>
+        $(function () {
+            // 阴影页删除导航条
+            $('.navbar-fixed-bottom').remove();
+            $('.navControl').remove();
+
+            var app = window.app;
+            var desks = '@Model' - 0;
+            var minDegree = Math.round(360 / desks);
+            // 最终结果
+            var Lottey = new app.lottery({
+                canvasOut1: document.getElementById('canvasOut1'),
+                canvasOut2: document.getElementById('canvasOut2'),
+                canvasOut3: document.getElementById('canvasOut3'),
+                canvasIn1: document.getElementById('canvasIn1'),
+                canvasIn2: document.getElementById('canvasIn2'),
+                canvasPoint: document.getElementById('canvasPoint')
+            });
+            var colors = ["#fbae27", "#f9be34"];
+            var text = ["一号桌", "", "", "", "", "", "", "", "", ""];
+            var textIn = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+            Lottey.init(text.length, colors, text, 0, textIn.length, textIn, 0);
+
+            $('.moveItem').addClass('moveUp');
+
+            var interValDeskId = 0;
+
+            var isOutProcess = false;
+            $('.btn-selDesk').click(function () {
+                if (isOutProcess) {
+                    isOutProcess = false;
+                    window.parent.app.stopLotteryOut();
+                    window.parent.$('iframe').hide();
+                    clearInterval(Lottey.mytime);
+                    $('.btn-selDesk').text('选取桌位');
+                    // 选取椅子可以点击
+                    $('.btn-selSeat-shadow').hide();
+                    $('.btn-selSeat').show();
+                    $('#rotate').removeClass('rotationX');
+                    clearInterval(interValDeskId);
+                } else {
+                    isOutProcess = true;
+                    // 获取随机桌号
+                    window.parent.app.getRandomDesk();
+                    // 转到指定中间角度
+                    window.parent.app.getTempDesk();
+                    // 开始闪烁
+                    Lottey.mytime = setInterval(Lottey.getCanvasOut2.bind(Lottey), 200);
+                    $('.btn-selDesk').html('停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;止');
+                    // 选取椅子不能点击
+                    $('.btn-selSeat').hide();
+                    $('.btn-selSeat-shadow').show();
+                    $('#rotate').addClass('rotationX');
+                    interValDeskId = setInterval(changeSelectDesk, 40);
+                }
+            });
+
+            var isInProcess = false;
+            $('.btn-selSeat').click(function () {
+                if (isInProcess) {
+                    isInProcess = false;
+                    window.parent.app.stopLotteryIn();
+                    window.parent.$('iframe').hide();
+                    clearInterval(Lottey.mytimeIn);
+                    $('.btn-selSeat').text('选取座位');
+                    // 选取桌子可以点击
+                    $('.btn-selDesk-shadow').hide();
+                    $('.btn-selDesk').show();
+                    $('#rotateIn').removeClass('rotationX');
+                } else {
+                    isInProcess = true;
+                    // 获取随机椅子号
+                    window.parent.app.getRandomSeat();
+                    // 转到指定中间角度
+                    window.parent.app.getTempSeat();
+                    // 开始闪烁
+                    Lottey.mytimeIn = setInterval(Lottey.getCanvasIn2.bind(Lottey), 200);
+                    $('.btn-selSeat').html('停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;止');
+                    // 选取桌子不能点击
+                    $('.btn-selDesk').hide();
+                    $('.btn-selDesk-shadow').show();
+                    $('#rotateIn').addClass('rotationX');
+                }
+            });
+
+            function changeSelectDesk() {
+                var deskNo = 0;
+                var degree = app.getRotate("rotate");
+                if (degree > 0) {
+                    degree = 360 - degree;
+                } else {
+                    degree = 0 - degree;
+                }
+                if (degree <= 18) {
+                    deskNo =  Math.ceil(degree / minDegree);
+                } else {
+                    deskNo = Math.ceil((degree + 18) / minDegree);
+                }
+                // console.log('当前选中：' + deskNo + " -> " + degree);
+                // 翻牌到对应桌号
+                moveUp(deskNo, 24);
+                return deskNo;
+            }
+
+            function moveUp(deskNo, itemHeight) {
+                //var curMarginTop = $('.info-desk .info-cart:first').css('marginTop');
+                //curMarginTop = curMarginTop.replace('px', '');
+                //var newMarginTop = 0 - itemHeight * (deskNo - 1);
+                //$('.info-desk .info-cart:first').css('marginTop', newMarginTop + 'px');
+                $('.moveItem').css('transform', 'translateY(-' + itemHeight * (deskNo - 1) + 'px)');
+            }
+
+            app.setPosition = function (inParams) {
+                if (inParams.rotate) {
+                    document.getElementById('rotate').style.transform = 'rotate(' + inParams.rotate + 'deg)';
+                    moveUp(inParams.deskNo, 24);
+                }
+                if (inParams.rotateIn) {
+                    document.getElementById('rotateIn').style.transform = 'rotate(' + inParams.rotateIn + 'deg)';
+                }
+            }
+        });
+    </script>
+}
