@@ -7,9 +7,57 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F3053DD0-850
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{91C56937-BBED-47E8-B9BE-B40C0F2D1BC4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "demos", "demos", "{75FD09C0-1DC2-4098-AD85-909C49C2F0D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{28D2A1A0-72D9-4BD9-92C7-755E96A46BD2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuickstartIdentityServer", "demos\IdentityServer\QuickstartIdentityServer\QuickstartIdentityServer.csproj", "{69FE2B0B-B284-4C5F-935B-C7466FBC35D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIService1", "demos\IdentityServer\APIService1\APIService1.csproj", "{204E6E47-2018-4301-BD7C-FBEB02939F46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client1", "demos\IdentityServer\Client1\Client1.csproj", "{53FAE3B6-9CB8-4747-B1CC-80400E69CAF8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceOwnerPassword", "demos\IdentityServer\ResourceOwnerPassword\ResourceOwnerPassword.csproj", "{F1F22606-D886-4CD6-93A7-78D5FA91DDF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCApplication1", "demos\IdentityServer\MVCApplication1\MVCApplication1.csproj", "{79AD2FCD-299A-4542-A3F3-A79BAFA576E4}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69FE2B0B-B284-4C5F-935B-C7466FBC35D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69FE2B0B-B284-4C5F-935B-C7466FBC35D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69FE2B0B-B284-4C5F-935B-C7466FBC35D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69FE2B0B-B284-4C5F-935B-C7466FBC35D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{204E6E47-2018-4301-BD7C-FBEB02939F46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{204E6E47-2018-4301-BD7C-FBEB02939F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{204E6E47-2018-4301-BD7C-FBEB02939F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{204E6E47-2018-4301-BD7C-FBEB02939F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53FAE3B6-9CB8-4747-B1CC-80400E69CAF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53FAE3B6-9CB8-4747-B1CC-80400E69CAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53FAE3B6-9CB8-4747-B1CC-80400E69CAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53FAE3B6-9CB8-4747-B1CC-80400E69CAF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F22606-D886-4CD6-93A7-78D5FA91DDF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F22606-D886-4CD6-93A7-78D5FA91DDF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F22606-D886-4CD6-93A7-78D5FA91DDF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F22606-D886-4CD6-93A7-78D5FA91DDF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79AD2FCD-299A-4542-A3F3-A79BAFA576E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79AD2FCD-299A-4542-A3F3-A79BAFA576E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79AD2FCD-299A-4542-A3F3-A79BAFA576E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79AD2FCD-299A-4542-A3F3-A79BAFA576E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28D2A1A0-72D9-4BD9-92C7-755E96A46BD2} = {75FD09C0-1DC2-4098-AD85-909C49C2F0D8}
+		{69FE2B0B-B284-4C5F-935B-C7466FBC35D3} = {28D2A1A0-72D9-4BD9-92C7-755E96A46BD2}
+		{204E6E47-2018-4301-BD7C-FBEB02939F46} = {28D2A1A0-72D9-4BD9-92C7-755E96A46BD2}
+		{53FAE3B6-9CB8-4747-B1CC-80400E69CAF8} = {28D2A1A0-72D9-4BD9-92C7-755E96A46BD2}
+		{F1F22606-D886-4CD6-93A7-78D5FA91DDF3} = {28D2A1A0-72D9-4BD9-92C7-755E96A46BD2}
+		{79AD2FCD-299A-4542-A3F3-A79BAFA576E4} = {28D2A1A0-72D9-4BD9-92C7-755E96A46BD2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0D6E667-D298-4C02-A59B-C212A6DE8406}

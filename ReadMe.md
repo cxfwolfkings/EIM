@@ -49,7 +49,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 }
 ```
 
-><b style="color:red">注意：<b>hostname 和 ip 要统一，混合用会出问题！
+<b style="color:red">注意：</b>hostname 和 ip 要统一，混合用会出问题！
 
 ## 服务注册中心
 
@@ -215,6 +215,18 @@ Install-Package Polly -Version xxx
 ## 认证鉴权
 
 ### IdentityServer
+
+
+
+### OIDC
+
+- OIDC：Open ID Connect
+
+  OIDC是基于OAuth2的，OAuth2只解决了授权的问题，没有解决认证问题，而OpenID是个认证协议，所以二者结合就是OIDC。
+
+- OIDC= OAuth2 + OpenID
+
+  OIDC在OAuth2的access_token的基础上增加了身份认证信息， 通过公钥私钥配合校验获取身份等其他信息—– 即idToken
 
 ## 网络服务
 
