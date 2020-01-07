@@ -36,7 +36,9 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "src\docke
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4178F93C-1B7A-410E-A027-6A17F40E5F7D}"
 	ProjectSection(SolutionItems) = preProject
+		Consul.md = Consul.md
 		src\NuGet.config = src\NuGet.config
+		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{0DE6D1B6-1EE4-4336-9FB5-F111D70E1B46}"
