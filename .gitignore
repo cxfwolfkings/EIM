@@ -1,6 +1,7 @@
 **/_drafts
 **/.vs
 **/.vscode
+**/log
 **/bin
 **/obj
 **/node_modules
